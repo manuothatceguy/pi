@@ -1,0 +1,1 @@
+#define swap(t,x,y) t temp = (x); t (x) = (y); (y) = temp;
