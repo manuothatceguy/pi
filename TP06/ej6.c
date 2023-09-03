@@ -11,6 +11,4 @@ void mezclarArray(int arr[], int dim)
         arr[i] = arr[pos];
         arr[pos] = aux;
     }
-    
-
 }
