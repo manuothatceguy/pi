@@ -1,20 +1,21 @@
-#include <math.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
-#include "../random/random.h"
+
 #define FILAS 20
 #define COLUMNAS 80
 
+// Función para generar una matriz aleatoria de intensidades en el cielo
 void generarMatriz(int matriz[FILAS][COLUMNAS]) {
-    randomize();
+    srand(time(NULL));
     for (int i = 1; i < FILAS - 1; i++) {
         for (int j = 1; j < COLUMNAS - 1; j++) {
-            matriz[i][j] = randInt(0,20); // Valores entre 0 y 20
+            matriz[i][j] = rand() % 21; // Valores entre 0 y 20
         }
     }
 }
 
+// Función para graficar las estrellas en la matriz
 void graficarEstrellas(int matriz[FILAS][COLUMNAS]) {
     for (int i = 1; i < FILAS - 1; i++) {
         for (int j = 1; j < COLUMNAS - 1; j++) {
