@@ -6,7 +6,7 @@
 #define FILAS 5
 #define COLUMNAS 5
 
-void swap(int fil, int col, int m[fil][col], int fromFil, int toFil, int fromCol, int toCol){
+void swap_matrix(int fil, int col, int m[fil][col], int fromFil, int toFil, int fromCol, int toCol){
     int aux;
     aux = m[fromFil][fromCol];
     m[fromFil][fromCol] = m[toFil][toCol];
@@ -16,7 +16,7 @@ void swap(int fil, int col, int m[fil][col], int fromFil, int toFil, int fromCol
 void shift_fila(int fil, int col, int m[fil][col], int filDest, int filOrig)
 {
     for (int i = 0; i < fil; i++){
-        swap(fil,col,m,filOrig,filDest,i,i);
+        swap_matrix(fil,col,m,filOrig,filDest,i,i);
     }
 }
 
@@ -40,10 +40,10 @@ void sorting(int fil, int col, int m[fil][col], int colRef){
 
 int main()
 {
-    int matriz[5][5] = { {8, 1, 3 ,4 ,5}, {2,3,5,7,8}, {3,4,3,5,6}, {0,5,4,2,4}, {6,4,3,5,6} };
-    for (int i = 0; i < 5; i++)
+    int matriz[FILAS][COLUMNAS] = { {8, 1, 3 ,4 ,5}, {2,3,5,7,8}, {3,4,3,5,6}, {0,5,4,2,4}, {6,4,3,5,6} };
+    for (int i = 0; i < FILAS; i++)
     {
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < COLUMNAS; j++)
         {
             printf("%d ",matriz[i][j]);
         }
@@ -52,7 +52,7 @@ int main()
     }
     printf("\n");
 
-    sorting(5,5,matriz,1);
+    sorting(FILAS,COLUMNAS,matriz,1);
     for (int i = 0; i < 5; i++)
     {
         for (int j = 0; j < 5; j++)
