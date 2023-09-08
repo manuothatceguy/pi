@@ -5,7 +5,7 @@
 #define EPSILON 0.000001
  
 int solucionCuadratica(int, int, int, float *, float *);
- 
+
 int
 main(void) {
     float r1, r2;
