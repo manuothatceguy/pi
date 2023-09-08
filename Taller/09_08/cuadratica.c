@@ -24,7 +24,7 @@ main(void) {
 }
 
 int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
-    double disc = pow(b,2)-(4*a*c);
+    float disc = pow(b,2)-(4*a*c);
     if (disc < 0)
         return 0;
     else if(disc == 0){
