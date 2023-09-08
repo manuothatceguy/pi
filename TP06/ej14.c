@@ -41,42 +41,42 @@ int contiene(const int v1[], unsigned int dim1, const int v2[], unsigned int dim
     else if(!dim2)
         return 2;
     // Si ninguno es vacío
+    int retVal;
     int iguales = 0;
-    if(dim1 > dim2)
-    {
-        for (int i = 0; i < dim1; i++)
-        {
+    
+    if(dim1 >= dim2){
+
+        for (int i = 0; i < dim1; i++){
             for (int j = 0; j < dim2; j++)
             {
                 if(v1[i] == v2[j])
                     iguales++;
             }
         }
-        if(iguales==dim2)
-            return 2;
-
-        for (int i = 0; i < dim2; i++)
-        {
-            for (int j = 0; j < dim1; j++)
-            {
-                if(v2[i] == v1[j])
-                    iguales++;
-            }
-        }
-        // REPLANTEAR ESTE EJERCICIO
-        return iguales==dim2;
+        if(iguales == dim1)
+            retVal = 1;
+        else if(iguales == dim2)
+            retVal = 2;
+        else 
+            retVal = 0;
     }
-    else
+    else if (dim1 < dim2)
     {
-        for (int i = 0; i < dim2; i++)
-        {
+        for (int i = 0; i < dim2; i++){
             for (int j = 0; j < dim1; j++)
             {
                 if(v2[i] == v1[j])
                     iguales++;
             }
         }
-        return (iguales==dim1);
+        if(iguales == dim2)
+            retVal = 2;
+        else if(iguales == dim1)
+            retVal = 1;
+        else 
+            retVal = 0;
     }
+
+    return retVal;
 }
 
