@@ -28,8 +28,7 @@ int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
     if (disc < 0)
         return 0;
     else if(disc == 0){
-        *r1 = (-b)/(2*a);
-        *r2 = *r1;
+        *r1 = *r2 = (-b)/(2*a);
         return 1;
     }
     else{
