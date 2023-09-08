@@ -33,8 +33,9 @@ int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
         cantRaices = 1;
     }
     else{
-        *r1 = ((-b + sqrt(disc))/(2*a));
-        *r2 = ((-b - sqrt(disc))/(2*a));
+        double raizDisc = sqrt(disc);
+        *r1 = ((-b + raizDisc)/(2*a));
+        *r2 = ((-b - raizDisc)/(2*a));
         cantRaices = 2;
     }
     return cantRaices;
