@@ -33,10 +33,8 @@ int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
         return 1;
     }
     else{
-        
         *r1 = ((-b + sqrt(disc))/(2*a));
         *r2 = ((-b - sqrt(disc))/(2*a));
-
         return 2;
     }
 }
