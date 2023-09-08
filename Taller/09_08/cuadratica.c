@@ -25,15 +25,17 @@ main(void) {
 
 int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
     float disc = pow(b,2)-(4*a*c);
+    int cantRaices;
     if (disc < 0)
-        return 0;
+        cantRaices = 0;
     else if(disc == 0){
         *r1 = *r2 = (-b)/(2*a);
-        return 1;
+        cantRaices = 1;
     }
     else{
         *r1 = ((-b + sqrt(disc))/(2*a));
         *r2 = ((-b - sqrt(disc))/(2*a));
-        return 2;
+        cantRaices = 2;
     }
+    return cantRaices;
 }
