@@ -18,7 +18,7 @@ main(void) {
     assert(fabs(r2 - -0.5) < EPSILON);
  
     assert(solucionCuadratica(1, 0, 1, &r1, &r2) == 0); // x^2 + 1
- 
+
     printf("\nOK!\n");
     return 0;
 }
@@ -33,8 +33,10 @@ int solucionCuadratica(int a, int b, int c, float *r1, float *r2){
         return 1;
     }
     else{
+        
         *r1 = ((-b + sqrt(disc))/(2*a));
         *r2 = ((-b - sqrt(disc))/(2*a));
+
         return 2;
     }
 }
