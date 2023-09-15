@@ -31,8 +31,23 @@ main(void)
 
   return 0;
 }
+/*int 
+main(void)
+{
+  int m1[][COLS] = {{0,1,2,3}, {4,4,5,6}, {7,8,8,9}};
+  int m2[][COLS] = {{0,1,2,3}, {-3,7,8,9}, {-1,3,4,7}, {4,5,6,8}};
+  int m3[][COLS] = {{2,3,3,7}};
+  printf("%d\n", sonAmigas(m1,3,m2,4)); // Imprime 1                 
+  printf("%d\n", sonAmigas(m2,4,m1,3)); // Imprime 2 __
+  printf("%d\n", sonAmigas(m1,3,m3,1)); // Imprime 0  __
+
+
+  return 0;
+}*/
+
+
 //Esta función contiene funciona, pero no aprovecha que el anterior es menor o igual al siguiente
-int contiene(const int v1[], const int v2[], int dim){
+/*int contiene(const int v1[], const int v2[], int dim){
     for (int i = 0; i < dim; i++)
     {
         int found = 0;
@@ -45,24 +60,23 @@ int contiene(const int v1[], const int v2[], int dim){
             return 0;
     }
     return 1;
-}
+}*/
 
 
-/*int contiene(const int v1[], const int v2[], int dim){
-    int i,j;
-    for (int i = 0, j = 0; i < dim && j < dim;)
+int contiene(const int v1[], const int v2[], int dim){
+    int i = 0, j = 0;
+    while (i < dim && j < dim)
     {
         if(v1[i] < v2[j])
             return 0;
         else if(v1[i] == v2[j])
             i++;
-        else{ //if(v1[i] > v2[j])
+        else
             j++;
-        }
     }
-    return (i == dim); //para verif el caso en el que me paso buscando y no encuentro
+    return (i == dim);
 }
-*/
+
 int vecEnMatriz(const int v[], const int m[][COLS], int fils){
     for (int i = 0; i < fils; i++)
     {
