@@ -4,6 +4,7 @@
 
 #define DIM 9
 
+int verifFila(char fila[]);
 int sudokuSolver(char m[][DIM]);
 
 int main(void) {
@@ -74,21 +75,36 @@ int main(void) {
   return 0;
 }
 
-int sudokuSolver(char m[][DIM]){
-    int suma, numAct, numAnt;
+int verifFila(char fila[]){
+    char digitos[] = {0,0,0,0,0,0,0,0,0};
+    int number;
+    int primerNum = fila[0];
     for (int i = 0; i < DIM; i++)
     {
-        suma = 0;
-        numAnt = 0;
-        for (int j = 0; j < DIM; j++)
-        {
-            numAct = m[i][j];
-            if(numAct > 9 || numAct < 1 || numAnt == numAct)
-                return 0;
-            suma += numAct;
-            numAnt = numAct;
-        }
-        if (suma != 45)
+        number = fila[i];
+        if (number < 1 || number > 9)
+            return 0;
+        else
+            digitos[number-1]++;
+    }
+    for (int n = 0; n < DIM; n++)
+    {
+        if(digitos[n] != 1)
+            return 0;
+    }
+    return primerNum;
+    
+}
+
+int sudokuSolver(char m[][DIM]){
+    int pos[DIM] = {0};
+    for (int i = 0; i < DIM; i++)
+    {
+        pos[i] = verifFila(m[i]);
+    }
+    for (int i = 0; i < DIM; i++)
+    {
+        if(pos[i] == 0)
             return 0;
     }
     return 1;
