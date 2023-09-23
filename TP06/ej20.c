@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <ctype.h>
+#include <math.h>
 
 #define DIM 9
 
@@ -75,36 +76,66 @@ int main(void) {
   return 0;
 }
 
+int verifSq(char m[][DIM]){
+    int dimCuad = DIM/sqrt(DIM);
+    char digitos[DIM] = {0};
+    int k = 0;
+    for (int i = 0; i < DIM; i+=dimCuad)
+    {
+        for (int j = 0; j < DIM; j+=dimCuad)
+        {
+            k = 0;
+            for (int p = i; p < dimCuad; p++)
+            {
+                for (int n = j; n < dimCuad; n++)
+                {
+                    digitos[k++] = m[p][n];
+                }
+            }
+            if(verifFila(digitos) == 0)
+                return 0;
+        }
+    }
+    return 1;
+    
+}
+
+
 int verifFila(char fila[]){
-    char digitos[] = {0,0,0,0,0,0,0,0,0};
-    int number;
-    int primerNum = fila[0];
+    char digitos[9] = {0};
     for (int i = 0; i < DIM; i++)
     {
-        number = fila[i];
-        if (number < 1 || number > 9)
+        if (fila[i] < 1 || fila[i] > 9)
             return 0;
         else
-            digitos[number-1]++;
+            digitos[fila[i]-1]++;
     }
     for (int n = 0; n < DIM; n++)
     {
         if(digitos[n] != 1)
             return 0;
     }
-    return primerNum;
-    
+    return 1;
+}
+
+int verifCol(char m[][DIM], int col){
+    int digitos[DIM] = {0};
+    for (int i = 0; i < DIM; i++)
+    {
+        digitos[i] = m[i][col];
+    }
+    for (int n = 0; n < DIM; n++)
+    {
+        if(!digitos[n])
+            return 0;
+    }
+    return 1;
 }
 
 int sudokuSolver(char m[][DIM]){
-    int pos[DIM] = {0};
     for (int i = 0; i < DIM; i++)
     {
-        pos[i] = verifFila(m[i]);
-    }
-    for (int i = 0; i < DIM; i++)
-    {
-        if(pos[i] == 0)
+        if(verifFila(m[i]) == 0 || verifCol(m,i) == 0 || verifSq(m) == 0)
             return 0;
     }
     return 1;

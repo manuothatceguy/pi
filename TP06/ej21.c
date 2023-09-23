@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <math.h>
-
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 /* Simplificación de la fracción representada por num y den */
 void simplFrac(int *num, int *den);
@@ -9,7 +9,7 @@ void simplFrac(int *num, int *den);
 /* Calcula la suma de dos fracciones representadas por num1 / den1, num2 / den2 
  * Deja el resultado en numS / denS 
  */
-void sumarFrac(int num1, int num2, int den1, int den2, int *mumS, int *denS);
+void sumarFrac(int num1, int num2, int den1, int den2, int *numS, int *denS);
 
 /* Devuelve el máximo común divisor de dos números */
 int dcm(int num1, int num2);
@@ -59,25 +59,38 @@ int main(void) {
 void simplFrac(int *num, int *den){
     int dcmFrac = dcm(*num, *den);
     if(dcmFrac != 0){
-    *num /= dcmFrac;
-    *den /= dcmFrac;
+        *num /= dcmFrac;
+        *den /= dcmFrac;
     }
+    else if(*num == 0)
+        *den = 1;
+    
 }
 
 /* Calcula la suma de dos fracciones representadas por num1 / den1, num2 / den2 
  * Deja el resultado en numS / denS 
  */
-void sumarFrac(int num1, int num2, int den1, int den2, int *mumS, int *denS);
+void sumarFrac(int num1, int num2, int den1, int den2, int *numS, int *denS){
+    int newNum, newDen;
+    newNum = num1*den2 + num2*den1;
+    newDen = den1*den2;
+    simplFrac(&newNum,&newDen);
+    *numS = newNum;
+    *denS = newDen;
+}
 
 /* Devuelve el máximo común divisor de dos números */
-int dcm(int num1, int num2){
-    int divComMay = 1;
-    if(num1 == 0 || num2 == 0)
+int dcm(int x, int y){
+    int divcm = 1;
+    if(x == 0 || y == 0)
         return 0;
-    for (int i = 2; i < sqrt(num1) && i < sqrt(num2); i++)
-    {
-        if(num1 % i == 0 && num2 % i == 0)
-            divComMay*i;
+    for (int i = MIN(x,y); i > 0; i--){
+        if((x%i == 0)&&(y%i == 0)){
+            x /= i;
+            y /= i;
+            divcm *= i;
+        }
+
     }
-    return divComMay;
+    return divcm;   
 }

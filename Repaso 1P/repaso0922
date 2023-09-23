@@ -1,0 +1,97 @@
+09/22/2023
+
+P1 2C 2014
+
+EJ 2:
+
+
+a) Escribir una función que reciba un string y elimine del mismo todos los caracteres que no sean una
+letra del alfabeto inglés. La función debe retornar en su nombre la longitud del string luego de
+eliminar los caracteres.
+
+
+int eliminaNoAlpha(char s[]){
+    int j = 0;
+    for (int i = 0; s[i] != '\0'; i++){
+        if(isalpha(s[i]){
+            s[j++] = s[i];
+        }
+    }
+    s[j] = '\0';
+    return j;
+}
+
+b) Escribir un ejemplo de invocación a la función del punto anterior que ASEGURE que se provocará
+un error de ejecución.
+
+Si defino el string como char * str = "hola" es de la zona constante, si lo intento modificar hay error.
+
+EJ 4: Matrices
+
+void letrasRepetidas (char s[], char m[][COLS], int filas){
+    int error = 0;    
+    for (int i = 0; s[i] != '\0' && !error; i++){
+    TERMINAR
+
+    }
+}
+
+int posiciónFinal (int tablero[FILAS][COLUMNAS], int xi, int yi, int dirx, int diry, int n, int * xf, int * yf){
+
+    // Validación de parámetros en un solo if
+    if (xi => FILAS || xi < 0 || yi => COLUMNAS || yi < 0 || n < 0 || dirx > 1 || dirx < -1 || diry > 1 || diry < -1 || (dirx == 0 && diry == 0))
+        return ERRORPARAMETROS;
+
+    int pasos = 0;
+    // NO USAR EL FOR, HACER LA CUENTA DIRECTAMENTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! porque es una matriz vacía y la operación es una!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    /*
+
+    for (*xf = xi+dirx, *yf = yi+diry; (*xf >= 0) && (*xf < FILAS) && (*yf >= 0) && (*yf < COLUMNAS) ; *xf += dirx, *yf += diry){
+            pasos++;
+    }
+
+    */
+
+    *xf = xi + dirx*n;
+    *yf = yi + diry*n;
+
+    if(*xf < 0 || *xf >= FILAS || *yf < 0 || *yf >= COLUMNAS)
+        return ERRORPASOS;
+    
+    tablero[*xf][*yf] = 'B';
+    return EXITO;
+}
+
+int posiciónFinalConXDeObstaculo (int tablero[FILAS][COLUMNAS], int xi, int yi, int dirx, int diry, int n, int * xf, int * yf){
+
+    // Validación de parámetros en un solo if
+    if (xi => FILAS || xi < 0 || yi => COLUMNAS || yi < 0 || n < 0 || dirx > 1 || dirx < -1 || diry > 1 || diry < -1 || (dirx == 0 && diry == 0))
+        return ERRORPARAMETROS;
+
+    int pasos = 0;
+
+    for (*xf = xi+dirx, *yf = yi+diry; (*xf >= 0) && (*xf < FILAS) && (*yf >= 0) && (*yf < COLUMNAS) && (tablero[*xf][*yf] != 'X'); *xf += dirx, *yf += diry){
+            pasos++;
+    }
+
+    if( (*xf < 0) || (*xf >= FILAS) || (*yf < 0) || (*yf >= COLUMNAS) || (pasos - n > 0) )
+        return ERRORPASOS;
+    
+    tablero[*xf][*yf] = 'B';
+    return EXITO;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
