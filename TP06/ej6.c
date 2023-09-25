@@ -4,6 +4,7 @@
 void mezclarArray(int arr[], int dim)
 {
     int aux, pos;
+    randomize();
     for (int i = 0; i < dim; i++)
     {
         pos = randInt(0,dim-1);
@@ -11,4 +12,5 @@ void mezclarArray(int arr[], int dim)
         arr[i] = arr[pos];
         arr[pos] = aux;
     }
+    return;
 }

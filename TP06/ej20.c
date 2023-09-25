@@ -75,7 +75,6 @@ int main(void) {
 
   return 0;
 }
-
 int verifSq(char m[][DIM]){
     int dimCuad = DIM/sqrt(DIM);
     char digitos[DIM] = {0};
@@ -101,8 +100,9 @@ int verifSq(char m[][DIM]){
 }
 
 
+
 int verifFila(char fila[]){
-    char digitos[9] = {0};
+    char digitos[DIM] = {0};
     for (int i = 0; i < DIM; i++)
     {
         if (fila[i] < 1 || fila[i] > 9)

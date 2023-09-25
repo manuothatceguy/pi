@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-void secuenciaAsc(const int [], size_t dim, int * comienzo, int * longitud);
+void secuenciaAsc(const int [], int dim, int * comienzo, int * longitud);
 
 int
 main(void) {
@@ -48,38 +48,27 @@ main(void) {
     return 0;
 }
 
-void secuenciaAsc(const int v[], size_t dim, int *comienzo, int *longitud){
-    int ant = v[0], arranco = 0;
-    *longitud = 0;
-    int cant[8] = {0};
-    int com[8] = {0};
-    int j = 0;
-    for (int i = 1; i < dim; i++)
-    {
-        if (v[i] > ant && !arranco)
-        {
-            com[j] = i-1;
-            arranco = 1;
-            cant[j]++;
-        }
-        else if (v[i] > ant){
-            cant[j]++;
-        }
-        else if (arranco){
-            arranco = 0;
-            j++;
-        }
-        ant = v[i];
-    }
-    int max = 0;
-    for (int i = 0; i < 8; i++)
-    {
-        if(cant[i] > max)
-            max = i;
-    }
-    *comienzo = com[max];
-    *longitud = cant[max];
-    
-    
+void secuenciaAsc(const int v[], int dim, int *comienzo, int *longitud)
+{
+    int longMax=0, comMax=0;
+    *comienzo = 0, *longitud = 0;
+    for(int i=0; i<dim-1; i++){
 
+        if( v[i] < v[i+1] ){         
+            longMax++;
+            printf("Comparo %d con %d / longMax=%d\n", v[i], v[i+1], longMax);
+
+            if( longMax > *longitud ){
+            *comienzo = comMax; 
+            *longitud = longMax; // al comparar entre numeros me queda longMax-1
+            }
+        } else {
+            longMax=0;
+            comMax=i+1;
+        }
+    }
+
+    if( dim )
+       (*longitud)++; //sumo 1 para que me quede longMax
+    return;
 }
