@@ -47,7 +47,7 @@ main(void) {
     puts("OK!");
     return 0;
 }
-
+//Solución de grego
 void secuenciaAsc(const int v[], int dim, int *comienzo, int *longitud)
 {
     int longMax=0, comMax=0;
