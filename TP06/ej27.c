@@ -4,7 +4,7 @@
 
 #define CHARS_DIM 256
 
-int analize(const char * text, char * chars);
+void analize(const char * text, char * chars);
 
 int main(void) {
   char chars[CHARS_DIM];
@@ -37,7 +37,7 @@ void initVec(char v[], int len){
         v[i] = 0;
     }
 }
-int analize(const char * text, char * chars){
+void analize(const char * text, char * chars){
     int c;
     char caract[CHARS_DIM] = {0};
     initVec(chars,CHARS_DIM);
@@ -47,6 +47,4 @@ int analize(const char * text, char * chars){
         caract[c] = 1;
     }
     correspAscii(caract,chars);
-    return 0;
-
 }
