@@ -73,13 +73,13 @@ int main(void) {
 }
 
 int esBisiesto(int anio){
-    return (((anio%4 == 0) && (anio % 100 != 0)) || anio%400 == 0)?1:0;
+    return (((anio%4 == 0) && (anio % 100 != 0)) || anio%400 == 0)?TRUE:FALSE;
 }
 
 int validarFormato(const char * fecha){
-    int ok = 1;
+    int ok = TRUE;
     if(strlen(fecha) == LENFECHA && fecha[2] == '/' && fecha[5] == '/'){
-        for (char i = 0; i < LENFECHA && ok; i++)
+        for (int i = 0; i < LENFECHA && ok; i++)
         {
             if(i != 2 && i != 5){
                 ok = isdigit(fecha[i]);
@@ -105,14 +105,14 @@ int validarFecha(uInt dia, uInt mes, uInt anio){
 
 int valorFecha( const char * fecha, uInt *dia, uInt *mes, uInt * anio){
     uInt d,m,a;
-    int isValidF, isDate;
-    if((isValidF = validarFormato(fecha))){
+    int isValidFormat, isDate;
+    if((isValidFormat = validarFormato(fecha))){
         getDate(fecha, &d, &m, &a);
     }
-    if((isDate = isValidF?validarFecha(d,m,a):0)){
+    if((isDate = isValidFormat?validarFecha(d,m,a):FALSE)){
         * dia = d;
         * mes = m;
         * anio = a;
     }
-    return isDate?1:0;
+    return isDate?TRUE:FALSE;
 }
