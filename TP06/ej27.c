@@ -30,7 +30,6 @@ void correspAscii(char s[], char t[]){ //Si hay un 1 en el vector de apariciones
         if(s[i] == 1)
             t[j++] = i;
     }
-    
 }
 void initVec(char v[], int len){
     for (int i = 0; i < len; i++)
@@ -38,7 +37,6 @@ void initVec(char v[], int len){
         v[i] = 0;
     }
 }
-
 int analize(const char * text, char * chars){
     int c;
     char caract[CHARS_DIM] = {0};
