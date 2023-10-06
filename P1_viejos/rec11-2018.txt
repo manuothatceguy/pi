@@ -1,0 +1,50 @@
+Primer recu 2019 - 28/11/19
+
+1)
+
+int aparece(char c, char * s, int pos){
+    int encontrado = 0;
+    for(int i = pos+1; s[i] != '\0' && !encontrado; i++){
+        if(s[i] == c)
+            encontrado++;
+    }
+    return encontrado;
+}
+
+void elimina(char s[]){
+    int j = 0;
+    for(int i = 0; s[i] != '\0'; i++){
+        if(!aparece(s[i],s,i))
+              s[j++] = s[i];
+    }
+}
+
+2)
+
+int armaFilas(int m[][M], int vec[]){
+    int num = 0, idx = 0, error = 0;
+
+    for (int i = 0; i < N; i++){
+        for (int j = 0; j < M && (!error); j++){
+            error = (m[i][j] < 0 || m[i][j] > 9);
+            if(!error){
+                num = num*10;
+                num = num + m[i][j];
+            }
+            else{
+                num = 0;
+            }
+        }
+        if(num!=0){
+            vec[idx++] = num;
+            num = 0;
+        }
+        else {
+            error = 0;
+        }
+    }
+    
+    return idx;
+}
+
+3) 

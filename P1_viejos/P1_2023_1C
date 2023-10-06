@@ -1,0 +1,103 @@
+1) BIEN CON CORRECCIONES EN GITHUB
+
+void elimina(char * s1, char * s2, char * s3){
+    int i = 0, j = 0, fin2 = 0, fin3 = 0, i2 = 0, i3 = 0;    
+    while(s1[i] != '\0')){
+        fin2 = (s2[i2] == 0);
+        fin3 = (s3[i3] == 0);    
+        if(!fin2 && s1[i] == s2[i2]){
+            i++;       
+        }
+
+        else if(!fin3 && s1[i] == s3[i3]){
+            i++;
+        }
+            
+        else{
+            s1[j++] = s1[i++];
+        }
+        i2 += (!fin2);
+        i3 += (!fin3);
+    }
+    s1[j] = 0;
+}
+
+
+2) BIEN
+
+#define N 9
+#define DIM 3
+
+int analizaCuadrado(int m[][N], int startFil, int startCol){
+    int retVal = 1, suma = 0;
+    int num[3*N + 1] = {0};
+    for(int i = startFil; (i < startFil + DIM) && retVal; i++){
+        for(int j = startCol; (j < startCol + DIM) && retVal; j++){
+            if(m[i][j] < 1 || m[i][j] > 3*N)
+                retVal = 0;
+            else{
+                suma += m[i][j];
+                num[m[i][j]]++;            
+            }
+        }    
+    }
+    for(int i = 1; i <= 3*N && retVal; i++){
+        if(num[i] > 1)
+            retVal = 0;
+    }     
+    
+    return retVal ? suma : retVal;
+}
+
+int verifica(int m[][N]){
+    int suma = analizaCuadrado(m,0,0);
+    for(int i = 0; i < N; i+=3){
+        for(int j = 0; j < N; j+=3){
+            if(suma == 0 || suma != analizaCuadrado(m,i,j))
+                return 0;        
+        }    
+    }
+    return 1;
+}
+
+3) 
+
+#include <string.h>
+#include <stdio.h>
+#define COLS 5
+#define FILS 6
+
+int wordle(char * secret, char m[FILS][COLS], int attempts, char colores[FILS][COLS]){
+    int filaEncontrada = 0;
+    for(int f = 0; f < attempts; f++){
+        if(strcmp(m[f],secret) == 0)
+            filaEncontrada = f;        
+    }      
+    for(int i = 0; i < filaEncontrada+1; i++){
+        for(int j = 0; j < COLS; j++){
+            if(m[i][j] == secret[j])
+                colores[i][j] = 'V';
+            else if(strchr(m[i],secret[j]) != NULL)
+                colores[i][j] = 'A';
+            else
+                colores[i][j] = 'G';
+            }
+        }
+    }
+
+    return filaEncontrada?filaEncontrada:-1;
+}
+
+int main(){
+    
+    char m[FILS][COLS] = {{0}};
+    char colores[FILS][COLS] = {{0}};  
+
+    return 0;
+}
+
+
+
+
+
+

@@ -1,0 +1,119 @@
+1)
+
+#include <stdio.h>
+#include <ctype.h>
+#define MAX_NUM 10
+#include "getnum.h"
+
+void generateNumbers(int * n){
+    int marcaFin  = 0, i = 0;
+    while(!marcaFin || i < MAX_NUM){
+        n[i] = getint("Ingrese un número positivo (0 para cortar con el ingreso): ");
+        marcaFin = (n[i] == 0);
+        if(n[i] > 0)
+            i++;
+    }
+    return;
+}
+
+int hayRepetidos(int * n){
+    int i = 0, repetidos = 0;
+    for(;i < MAX_NUM && !repetidos; i++){
+        for(int j = i+1; j < MAX_NUM && !repetidos; j++){
+            if(n[i] == n[j])
+                repetidos = 1;
+        }
+    }
+    return repetidos;
+}
+
+int
+main(void){
+
+    int num[MAX_NUM+1] = {0};
+    generateNumbers(num);    
+    int reps = hayRepetidos(num);
+    printf("%s números repetidos en el arreglo",reps ? "Hay":"No hay");
+
+}
+
+2)
+
+int alfombras(int ancho, int largo){
+    if(ancho > 15 && alto > 15)
+        return 'C';
+    else if(ancho > 9 && alto > 9)
+        return 'B';
+    else if(ancho > 6 && alto > 6)
+        return 'A';
+    else
+        return 'X';
+}
+
+3)
+
+#define CANT_BILLS 7
+
+void
+billetes (int importe)
+{
+  if (importe <= 0)
+    return;
+  int v[] = { 100, 50, 20, 10, 5, 2, 1 };
+  for (int i = 0; i < CANT_BILLS; i++)
+    {
+      int num = importe / v[i];
+      if (num > 0)
+	{
+	  printf ("%d billete%s de $ %d\n", num, num > 1 ? "s" : "", v[i]);
+	  importe %= v[i];
+	}
+    }
+}
+
+4) 
+
+#define CHANGE_CASE(c) ((c) >= 'A' && (c) <= 'Z')?((c) + ('a' - 'A')):(((c) >= 'a' && (c) <= 'z')?((c) - ('a' - 'A')):(c))
+
+5a)
+
+if(numero < 100)
+    printf("numero es menor que 100");
+else if(numero < 200)
+    printf("numero está entre 100 y 199");
+else if(numero < 300)
+    printf("numero está entre 200 y 299");
+
+5b)
+
+switch(numero){
+    case 1:
+        printf("Es lunes");
+    case 2:
+        printf("Es martes");
+    case 3:
+        printf("Es miércoles");
+    case 4:
+        printf("Es jueves");       
+    case 5:
+        printf("Es viernes");
+    case 6:
+    case 7:
+        printf("Es fin de semana");
+    default:
+        printf("ERROR");
+}
+
+5c)
+
+for(int i = 0; i < 10 && (letra = getchar()); i++){
+    putchar(letra);
+}
+
+5d)
+
+printf("%s",numero>0?"":"mensaje");
+
+5e)
+
+return numero?1:0;

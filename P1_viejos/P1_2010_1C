@@ -1,0 +1,68 @@
+1)
+#define DISTANCIA(x1,y1,x2,y2) (((x2)-(x1))*((x2)-(x1))+((y2)-(y1))*((y2)-(y1)))
+#define DIAGONAL(x1,y1,x2,y2) ((x2) > (x1))&&((y2) > (y1)) ? sqrt(DISTANCIA((x1),(y1),(x2),(y2))) : 0
+
+3)
+
+#include <stdio.h>
+#define COLS 4
+#define FILS 4
+
+int sonIguales(int * fila1, int * fila2, int dim){
+    int retVal = 1;
+    for(int i = 0; i < dim && retVal; i++){
+        if(fila1[i] != fila2[i]){
+            retVal = 0;
+        }    
+    }
+    return retVal;
+}
+
+void sumaFilas(int * fila1, int * fila2, int * resp, int dim){
+    for(int i = 0; i < dim; i++){
+        resp[i] = fila1[i]+fila2[i];    
+    }
+}
+
+void esResultado(int m[][COLS], int filas, int cols, int f){
+    int r[COLS] = {0};
+    int match = 0;
+    for(int i = 0; i < filas && !match; i++){
+        for(int j = 0; j < filas && !match; j++){
+            if(i != f && j != f && i != j){
+                sumaFilas(m[i],m[j],r, cols);
+                match = sonIguales(r,m[f],cols);
+            }            
+        }    
+    }
+    if(match){
+        for(int i = 0; i < cols; i++){
+            m[f][i] = 0;        
+        }    
+    }
+}
+
+
+
+int
+main(void){
+    int matriz[FILS][COLS] = {{1,2,3,4},{5,6,7,8},{9,8,7,5},{6,8,10,12}};
+    esResultado(matriz,FILS,COLS,3);
+    for(int i = 0; i < FILS; i++){
+        for(int j = 0; j < COLS; j++){
+            printf("%d",matriz[i][j]);
+        }
+        puts("");
+    }
+
+    return 0;
+}
+
+4a)
+
+void insertaDesde(char * s1, char * s2, char c){
+    char * match = strchr(s1,c);
+    if(*match)
+        strcpy(match,s2);
+    return;
+}

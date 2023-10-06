@@ -8,7 +8,9 @@ int num_aparece(const int v[], int n, int dim)
     }
     return 0;
 }
+
 // Notación de punteros
+
 int aparece_num(const int v[], int n, int dim)
 {
     int *p = v;

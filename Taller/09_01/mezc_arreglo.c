@@ -4,12 +4,12 @@
 #include "../../random/random.h"
 #include <time.h>
 
-void mezclarArreglo2(int array[]);
+
 
 void mezclarArreglo(int array[], unsigned int dim){
     int aux,pos;
     
-    
+    randomize();
     for (int i = 0; i < dim; i++)
     {
         pos = randInt(0,dim-1);
@@ -26,7 +26,7 @@ int main()
     int vec[5] = {0,1,2,3,4};
     dim = sizeof(vec)/sizeof(vec[0]);
     randomize();
-    mezclarArreglo2(vec);
+    mezclarArreglo(vec,dim);
 
     for (int i = 0; i < dim; i++)
     {

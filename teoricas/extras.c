@@ -22,6 +22,35 @@ int eliminaCeros(const int v[], int n, int dest[]){
         }
         
     }
-    
     return j;
 }
+//obtener una línea como string de la entrada estándar, con tope en max. lo pone en v[] retorno longitud
+int getline(char v[], size_t max){
+    int c, i = 0;
+    while((c = getchar()) != '\n' && c != EOF){
+        if(i < max){
+            v[i++] = c;
+        }
+    }
+    v[i] = 0;
+    return i; //devuelo la longitud sin incluir el 0, igual que strlen
+}
+
+char * getline(){
+    int c;
+    int dim = 1;
+    int i = 0;
+    char * v = malloc(dim+1);
+    while((c = getchar()) != '\n' && (c != EOF)){
+        if(i < dim){
+            v[i++] = c;
+        }
+        if(i == dim){
+            dim++;
+            v = realloc(v,dim);
+        }
+    }
+    v[i] = 0;
+    return v;
+}
+

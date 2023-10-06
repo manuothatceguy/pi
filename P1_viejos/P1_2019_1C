@@ -1,0 +1,108 @@
+int noEsta(int n, int * v){
+    for(int i = 0; v[i] != -1; i++){
+        if(v[i] == n){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+void resta(int * v1, int * v2, int * r){
+    int i = 0, j = 0;
+    for(; v1[i] != -1; i++){
+        if(noEsta(v1[i],v2))
+            r[j++] = v1[i];        
+    }
+    r[j] = -1;
+    return;
+}
+
+int main(void){
+    int v1[] = {1, 9, 2, 6, 3, 5, -1};
+    int v2[] = {3, 2, 8, 2, -1};
+    int resta12[sizeof(v1)/sizeof(v1[0])];
+
+    resta(v1, v2, resta12);
+    printf("v1 - v2 = ");
+    for(int i = 0; resta12[i] != -1; i++)
+        printf("%d, ",resta12[i]);
+    puts("");
+
+    int resta21[sizeof(v2) / sizeof(v2[0])];
+    resta(v1, v2, resta21);
+    printf("v2 - v1 = ");
+    for(int i = 0; resta21[i] != -1; i++)
+        printf("%d, ",resta21[i]);
+    puts("");
+    
+    int resta11[1];
+    resta(v1,v1,resta11);
+    printf("v1 - v1 = ");
+    printf("%d",resta11[0]);
+
+    return 0;
+}
+
+3)
+
+
+int esAscendente(const int m[][DIM], int fils, int cols, int v[])
+{
+    int asc = 1; // Inicializo flag en 1
+    int posVec = 0, anterior;
+    v[0] = m[0][0];
+    for(int i=0; i<fils && asc; i++)
+    {
+        anterior=m[i][0];
+        for(int j=0; j<cols && asc; j++)
+        {
+            if( anterior > m[i][j])
+                asc=0;
+
+            if( (m[i][j] > m[i+1][j]) && (i < fils-1))
+                asc=0;
+
+            anterior = m[i][j];
+
+            // Completo el vector
+            if( asc && (v[posVec] < m[i][j]) )
+                v[++posVec] = m[i][j];
+        }
+    }
+
+    return (asc ? ++posVec : 0); // Me falto sumar uno dimVec = posVec + 1
+}
+
+4)
+
+#include <stdio.h>
+
+void reemplazar(char * s){
+    int j = 0;
+    for(int i = 0; s[i];){
+        if(s[i] == '#' && s[i+1] == '('){
+            i+=2;
+            s[j++] = '{';
+        }
+            
+        else if(s[i] == ')' && s[i+1] == '#'){
+            i+=2;
+            s[j++] = '}';
+            }
+        else{
+            s[j++] = s[i++];
+        }
+    }
+}
+
+int main(void){
+        
+    char s[] = "123 #( abc ##(  (#(  #)  #]";
+    reemplazar(s);
+    printf("%s",s);
+
+    return 0;
+}
+
+
+
