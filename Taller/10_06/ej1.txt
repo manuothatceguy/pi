@@ -1,0 +1,14 @@
+    int * arr;
+
+    int i;
+    arr = malloc(TAM*sizeof (int));
+    for(i = 0; i < TAM; i++)
+        arr[i] = 0;
+    free(arr);
+
+    arr = NULL;
+    arr = realloc(arr, TAM * sizeof(int));
+    for(int i = 0; i < TAM; arr[i++] = 0);
+    free(arr);
+
+    arr = calloc(TAM,sizeof(int));
