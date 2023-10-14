@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "getnum.h": "c"
+        "getnum.h": "c",
+        "stdio.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

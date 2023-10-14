@@ -34,7 +34,16 @@ int main(){
         imprimirCarton(cartones[i]);
     }
 
-    int bolillero[CANT_BOLILLAS + 1] = {0};
+    int bolillero[CANT_BOLILLAS + 1];
+    for (int i = 1; i <= CANT_BOLILLAS; i++) {
+        bolillero[i - 1] = i;
+    }
+    for (int i = CANT_BOLILLAS - 1; i > 0; i--) {
+        int j = randInt(0, i);
+        int temp = bolillero[i];
+        bolillero[i] = bolillero[j];
+        bolillero[j] = temp;
+    }
 
     puts("Comienza el juego...\n");
     int * win = jugar(bolillero,cartones);
@@ -99,16 +108,21 @@ int * jugar(int bolillero[], TipoCarton cartones[]){
     return winnersArray;
 }
 
-int sacarBolilla(int bolillero[], int * cantBolillas){
-    int bolilla;
-    do
-    {
-        bolilla = randInt(1,CANT_BOLILLAS);
-    } while (bolillero[bolilla]);
-    bolillero[bolilla] = 1;
-    (*cantBolillas)--;
-    printf("Salió el número %d\n\n",bolilla);
-    return bolilla;
+int
+sacarBolilla (int bolillero[], int *cantBolillas)
+{
+	int aux;
+	int bolilla;
+
+
+	aux = randInt(1, *cantBolillas -1) ;
+	(*cantBolillas)--;
+	bolilla = bolillero[aux];
+	bolillero[aux] = bolillero[*cantBolillas];
+    
+    printf("Salió el número %d\n",bolilla);
+
+	return bolilla;
 }
 
 int controlarCarton(TipoCarton carton, int bolilla){

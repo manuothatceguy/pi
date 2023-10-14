@@ -42,8 +42,16 @@ int main(){
     puts("Carton jugador 2 a continuación:");
     imprimirCarton(jug2);
 
-    int bolillero[CANT_BOLILLAS + 1] = {0};
-
+    int bolillero[CANT_BOLILLAS + 1];
+    for (int i = 1; i <= CANT_BOLILLAS; i++) {
+        bolillero[i - 1] = i;
+    }
+    for (int i = CANT_BOLILLAS - 1; i > 0; i--) {
+        int j = randInt(0, i);
+        int temp = bolillero[i];
+        bolillero[i] = bolillero[j];
+        bolillero[j] = temp;
+    }
     puts("Comienza el juego...\n");
     int res = jugar(bolillero,jug1,jug2);
     printf("Ganador: %s\n",(res == 3)?"ambos ganaron":((res == 1)?"jugador 1":"jugador 2"));
@@ -104,17 +112,23 @@ int jugar(int bolillero[], TipoCarton jug1, TipoCarton jug2){
     return bingo;
 }
 
-int sacarBolilla(int bolillero[], int * cantBolillas){
-    int bolilla;
-    do
-    {
-        bolilla = randInt(1,CANT_BOLILLAS);
-    } while (bolillero[bolilla]);
-    bolillero[bolilla] = 1;
-    (*cantBolillas)--;
+int
+sacarBolilla (int bolillero[], int *cantBolillas)
+{
+	int aux;
+	int bolilla;
+
+
+	aux = randInt(1, *cantBolillas -1) ;
+	(*cantBolillas)--;
+	bolilla = bolillero[aux];
+	bolillero[aux] = bolillero[*cantBolillas];
+    
     printf("Salió el número %d\n",bolilla);
-    return bolilla;
+
+	return bolilla;
 }
+
 
 int controlarCarton(TipoCarton carton, int bolilla){
     int lineas = 0;
