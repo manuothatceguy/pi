@@ -10,7 +10,7 @@ int obtenerConversion(int * bInput, int * bOutput){
 
     int tempBInput = atoi(e+1);
     int tempBOutput = atoi(e+3);
-
+    
     if(tempBInput > 1 && tempBInput < 11 && tempBOutput > 1 && tempBOutput < 11){
         *bInput = tempBInput;
         *bOutput = tempBOutput;
