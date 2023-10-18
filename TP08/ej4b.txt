@@ -1,91 +1,136 @@
-Carta: 1 de PICA
-Carta: 2 de PICA
-Carta: 1 de TREBOL
-Carta: 2 de CORAZONES
-Carta: 10 de DIAMANTE
+-----
+POKER
+-----
 
-Carta: 11 de PICA
+Mano del player:
+
 Carta: 12 de PICA
-Carta: 7 de DIAMANTE
-Carta: 3 de DIAMANTE
+Carta: 6 de TREBOL
 Carta: 11 de TREBOL
+Carta: 3 de TREBOL
+Carta: 3 de DIAMANTE
 
-El jugador obtuvo la siguiente jugada: NADA
+Mano de la máquina:
+
+Carta: 4 de DIAMANTE
+Carta: 13 de PICA
+Carta: 12 de CORAZONES
+Carta: 1 de DIAMANTE
+Carta: 9 de DIAMANTE
+
+El jugador obtuvo la siguiente jugada: PAR
+La máquina obtuvo la siguiente jugada: NADA
+
+El jugador suma puntos!
+
+Puntajes:
+Player: 1	Máquina: 0
+
+Mano del player:
+
+Carta: 5 de PICA
+Carta: 8 de CORAZONES
+Carta: 12 de TREBOL
+Carta: 5 de DIAMANTE
+Carta: 8 de TREBOL
+
+Mano de la máquina:
+
+Carta: 4 de TREBOL
+Carta: 8 de DIAMANTE
+Carta: 13 de TREBOL
+Carta: 13 de DIAMANTE
+Carta: 10 de TREBOL
+
+El jugador obtuvo la siguiente jugada: PAR
 La máquina obtuvo la siguiente jugada: PAR
 
-La máquina suma puntos!
-Puntaje de la máquina: 1
+Desempate.
+Suma punto la máquina.
 
-Carta: 7 de CORAZONES
-Carta: 12 de DIAMANTE
-Carta: 4 de PICA
-Carta: 13 de PICA
-Carta: 2 de TREBOL
+Puntajes:
+Player: 1	Máquina: 1
 
-Carta: 8 de TREBOL
-Carta: 5 de TREBOL
-Carta: 8 de DIAMANTE
+Mano del player:
+
+Carta: 9 de PICA
+Carta: 11 de CORAZONES
+Carta: 6 de PICA
 Carta: 11 de DIAMANTE
 Carta: 10 de CORAZONES
 
-El jugador obtuvo la siguiente jugada: NADA
-La máquina obtuvo la siguiente jugada: PIERNA
+Mano de la máquina:
 
-La máquina suma puntos!
-Puntaje de la máquina: 2
-
-Carta: 9 de PICA
-Carta: 13 de DIAMANTE
+Carta: 5 de TREBOL
+Carta: 10 de PICA
+Carta: 2 de PICA
 Carta: 5 de CORAZONES
-Carta: 11 de CORAZONES
-Carta: 8 de CORAZONES
-
-Carta: 9 de TREBOL
-Carta: 13 de CORAZONES
-Carta: 6 de DIAMANTE
-Carta: 7 de TREBOL
-Carta: 13 de TREBOL
-
-El jugador obtuvo la siguiente jugada: NADA
-La máquina obtuvo la siguiente jugada: PIERNA
-
-La máquina suma puntos!
-Puntaje de la máquina: 3
-
-Carta: 3 de CORAZONES
-Carta: 8 de PICA
-Carta: 3 de TREBOL
-Carta: 4 de DIAMANTE
-Carta: 4 de TREBOL
-
-Carta: 6 de CORAZONES
-Carta: 12 de TREBOL
-Carta: 10 de TREBOL
 Carta: 4 de CORAZONES
-Carta: 5 de PICA
 
-El jugador obtuvo la siguiente jugada: PIERNA
+El jugador obtuvo la siguiente jugada: PAR
 La máquina obtuvo la siguiente jugada: PAR
 
-El jugador suma puntos!
-Puntaje del player: 1
+Desempate.
+Suma punto el player.
 
-Carta: 10 de PICA
-Carta: 12 de CORAZONES
-Carta: 7 de PICA
-Carta: 1 de DIAMANTE
-Carta: 6 de TREBOL
+Puntajes:
+Player: 2	Máquina: 1
 
-Carta: 9 de DIAMANTE
-Carta: 5 de DIAMANTE
-Carta: 1 de CORAZONES
+Mano del player:
+
+Carta: 6 de DIAMANTE
+Carta: 7 de CORAZONES
+Carta: 10 de DIAMANTE
 Carta: 2 de DIAMANTE
-Carta: 6 de PICA
+Carta: 6 de CORAZONES
 
-El jugador obtuvo la siguiente jugada: NADA
-La máquina obtuvo la siguiente jugada: NADA
+Mano de la máquina:
+
+Carta: 7 de DIAMANTE
+Carta: 3 de PICA
+Carta: 1 de TREBOL
+Carta: 3 de CORAZONES
+Carta: 2 de TREBOL
+
+El jugador obtuvo la siguiente jugada: PAR
+La máquina obtuvo la siguiente jugada: PAR
+
+Desempate.
+Suma punto el player.
+
+Puntajes:
+Player: 3	Máquina: 1
+
+Mano del player:
+
+Carta: 1 de CORAZONES
+Carta: 1 de PICA
+Carta: 11 de PICA
+Carta: 9 de CORAZONES
+Carta: 13 de CORAZONES
+
+Mano de la máquina:
+
+Carta: 2 de CORAZONES
+Carta: 12 de DIAMANTE
+Carta: 7 de TREBOL
+Carta: 9 de TREBOL
+Carta: 7 de PICA
+
+El jugador obtuvo la siguiente jugada: PAR
+La máquina obtuvo la siguiente jugada: PAR
+
+Desempate.
+Suma punto la máquina.
+
+Puntajes:
+Player: 3	Máquina: 2
+
+---
+FIN
+---
 
 PUNTAJES FINALES
-player: 1	máquina: 3
+player: 3	máquina: 2
 
-Ganó la máquina
+Ganó el player

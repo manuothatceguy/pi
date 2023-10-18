@@ -8,7 +8,7 @@
 #define TOPE_CHECK 5
 #define PAR 2
 #define PIERNA 3
-#define POKER 5
+#define POKER 4
 
 
 typedef struct{
