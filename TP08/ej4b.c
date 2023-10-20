@@ -39,7 +39,7 @@ void mezcMazo(naipe mazo[]){
     return;
 }
 
-int checkJugada(naipe mazo[], int start) {
+int checkJugada(naipe mazo[], int start, int * num) {
     int contador[CANT_NUM] = {0}; // Inicializar un contador para cada número de carta
     
     // Contar las apariciones de cada número en la jugada actual desde el índice 'start'
@@ -51,58 +51,13 @@ int checkJugada(naipe mazo[], int start) {
 
     // Verificar si hay un POKER, PIERNA o PAR en la jugada actual
     for (int i = 0; i < CANT_NUM; i++) {
-        if(contador[i] > resultado)
+        if(contador[i] > resultado){
+            *num = mazo[i].num;
             resultado = contador[i];
+        }
     }
     return resultado;
 }
-
-int revisarDesempate(naipe mazo[], int idxPlayer, int idxMaquina, int resultado) {
-    int valoresPlayer[CANT_NUM] = {0};
-    int valoresMaquina[CANT_NUM] = {0};
-    
-    // Contar las apariciones de cada número de carta en la mano del jugador
-    for (int i = idxPlayer; i < idxPlayer + TOPE_CHECK; i++) {
-        valoresPlayer[mazo[i].num - 1]++;
-    }
-    
-    // Contar las apariciones de cada número de carta en la mano de la máquina
-    for (int i = idxMaquina; i < idxMaquina + TOPE_CHECK; i++) {
-        valoresMaquina[mazo[i].num - 1]++;
-    }
-    
-    int valorM = 0, valorP = 0;
-
-    // Encontrar el valor más alto que aparece 'resultado' veces en la mano de la máquina
-    for (int i = CANT_NUM - 1; i >= 0; i--) {
-        if (valoresMaquina[i] == resultado) {
-            valorM = i + 1;
-            break;
-        }
-    }
-
-    // Encontrar el valor más alto que aparece 'resultado' veces en la mano del jugador
-    for (int i = CANT_NUM - 1; i >= 0; i--) {
-        if (valoresPlayer[i] == resultado) {
-            valorP = i + 1;
-            break;
-        }
-    }
-
-    // Comparar los valores encontrados para determinar el ganador
-    if (valorM > valorP) {
-        return 1; // Máquina gana
-    } else if (valorP > valorM) {
-        return 2; // Jugador gana
-    }
-
-    return 0; // Empate
-}
-
-
-
-
-
 
 void printMano(int idxStart, naipe mazo[]){
     char * palos[] = {"PICA", "CORAZONES", "TREBOL", "DIAMANTE"};
@@ -110,6 +65,14 @@ void printMano(int idxStart, naipe mazo[]){
         printf("Carta: %d de %s\n",mazo[i].num,palos[mazo[i].palo]);
     }
     puts("");
+}
+
+int revisarDesempate(int numPlayer, int numMaquina){
+    if(numPlayer > numMaquina)
+        return 2;
+    else if(numPlayer < numMaquina)
+        return 1;
+    return 0;
 }
 
 int main(){
@@ -123,8 +86,9 @@ int main(){
     int puntajePlayer = 0;
     int puntajeMaquina = 0;
     int manoPlayer, manoMaquina, desempate;
+    int numManoPlayer = 0, numManoMaquina = 0;
 
-    puts("-----\nPOKER\n-----\n");
+    puts("-------\n|POKER|\n-------\n");
 
     for(int i = 0, j = CANT_CARTAS/2; i < CANT_CARTAS/2 - TOPE_CHECK && j < CANT_CARTAS - TOPE_CHECK; i += 5, j += 5){
         
@@ -135,11 +99,11 @@ int main(){
         puts("Mano de la máquina:\n");
         printMano(j,maz);
         
-        manoPlayer = checkJugada(maz,i);
+        manoPlayer = checkJugada(maz,i,&numManoPlayer);
         printf("El jugador obtuvo la siguiente jugada: %s\n",config[manoPlayer-1]);
 
 
-        manoMaquina = checkJugada(maz,j);
+        manoMaquina = checkJugada(maz,j,&numManoMaquina);
         printf("La máquina obtuvo la siguiente jugada: %s\n",config[manoMaquina-1]);
 
         puts("");
@@ -153,7 +117,7 @@ int main(){
         } else if(manoMaquina <= 1 && manoPlayer <= 1){
             puts("Ningún jugador suma puntos en esta ronda.\n");
         } else{
-            desempate = revisarDesempate(maz, i, j, manoMaquina);
+            desempate = revisarDesempate(numManoPlayer,numManoMaquina);
             printf("Desempate.\nSuma punto %s\n\n",desempate==1?"la máquina.":"el player.");
             if(desempate == 2)
                 puntajePlayer++;
