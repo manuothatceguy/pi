@@ -6,17 +6,30 @@
 #define TRUE 1
 #define FALSE !TRUE
 
-void reemplazo(int matriz[][MAX], int dim, int fil, int col){
-   if(dim == 0)
-      return;
-   if(dim == 1){
-      matriz[fil][col] = (matriz[fil][col])?FALSE:TRUE;
+void reemplazoRec(int matriz[][MAX], int dirF, int dirC, int fil, int col, int dim){
+   int i = fil + dirF;
+   int j = col + dirC;
+   if(i >= 0 && i < dim && j >= 0 && j < dim){
+      matriz[i][j] = matriz[i][j] ? FALSE:TRUE;
+      reemplazoRec(matriz,dirF,dirC,i,j,dim);
+   }
+   else
+   {
       return;
    }
-   reemplazo(matriz,dim-1,fil,col);
-
-
    
+}
+
+void reemplazo(int matriz[][MAX], int dim, int fil, int col){
+
+   reemplazoRec(matriz,-1,-1,fil,col,dim);
+   reemplazoRec(matriz,-1,1,fil,col,dim);
+   reemplazoRec(matriz,1,-1,fil,col,dim);
+   reemplazoRec(matriz,1,1,fil,col,dim);
+
+   matriz[fil][col] = matriz[fil][col] ? FALSE:TRUE;
+   
+   return;
 }
 
 int main(void) {
