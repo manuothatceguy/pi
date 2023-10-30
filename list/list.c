@@ -100,7 +100,7 @@ List tail(List list){
 
 int get(List list, size_t idx){
     if(list == NULL){
-        exit(0);
+        exit(1);
     }
     
     if(idx == 0){
@@ -118,7 +118,7 @@ int main(){
     // Iterar por los elementos
 
     List aux = myList;
-    while(! isEmpty(myList)){
+    while(! isEmpty(aux)){
         printf("%d",myList->head);
         aux = myList->tail;
     }

@@ -4,13 +4,14 @@
 int apareados(const char *texto){
     if(*texto == '\0')
         return 0;
-    if(*texto == '('){
-        int ret = apareados(texto+1);
-        if(ret != 0){
-            return ret;
-        }
-        return 1+ret;
-    }
+    int aux = apareados(texto+1);
+    if(aux > 0)
+        return aux;
+    if(*texto == ')')
+        aux -= 1;
+    else
+        aux += 1;
+    return aux;
     
 }
 
