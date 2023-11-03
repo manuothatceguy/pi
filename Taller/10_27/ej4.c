@@ -1,39 +1,51 @@
 #include <stdio.h>
+#include <string.h>
+#include <assert.h>
 #include <stdlib.h>
-#include <ctype.h>
 
-struct node{
-    int head;
-    struct node * tail;
-};
+#define BLOCK 10
 
-typedef struct node * List;
+typedef struct Node *tList;
 
-List strToListUpper(char * s, List list){
-    if(*s == '\0'){
-        list = malloc(sizeof(struct node));
-        list->tail = NULL;
-        return list;
+typedef struct Node
+{
+    char elem;
+    tList *tail;
+} tNode;
+
+tList strToListUpper(char *s);
+
+char *listToString(tList l)
+{
+    tList aux = l;
+    char *s = NULL;
+    int i = 0;
+    while (aux != NULL)
+    {
+        if (i % BLOCK == 0)
+            s = realloc(s, i + BLOCK);
+        s[i] = aux->elem;
+        aux = aux->tail;
+        i++;
     }
-    if(isupper(*s)){
-        if(list == NULL){
-            List aux = malloc(sizeof(struct node));
-            aux->head = *s;
-            aux->tail = strToListUpper(s+1,list);
-            list = aux;
-        }
-    }
-    else{
-        list = strToListUpper(s+1,list);
-    }
-
-    return list;
+    s = realloc(s, i + 1);
+    s[i] = 0;
+    return s;
 }
 
-void showListStr(List list){
+void freeList(tList l)
+{
+    if (l != NULL)
+    {
+        freeList(l->tail);
+        free(l);
+    }
+}
+
+void showListStr(tList list){
     if(list->tail == NULL)
         return;
-    putchar(list->head);
+    putchar(list->elem);
     showListStr(list->tail);
 }
 
@@ -46,14 +58,43 @@ void printfStr(char * s){
     puts("");
 }
 
-int main(){
+int main()
+{
+    tList aux = strToListUpper("AbCdEfG");
+    char *strList = listToString(aux);
+    assert(!strcmp(strList, "ACEG"));
+    freeList(aux);
+    free(strList);
 
-    char * s = "hola eeE MUnDooooOaeppp";
-    printfStr(s);
-    List list = NULL;
-    list = strToListUpper(s,list);
-    showListStr(list);
-    puts("");
+    aux = strToListUpper("");
+    strList = listToString(aux);
+    assert(!strcmp(strList, ""));
+    freeList(aux);
+    free(strList);
 
-    return 0;
+    aux = strToListUpper("Hoy vinimos a ver a Messi al Monumental");
+    strList = listToString(aux);
+    assert(!strcmp(strList, "HMM"));
+    freeList(aux);
+    free(strList);
+
+    aux = strToListUpper("no va a quedar ninguna porque son todas minusculas");
+    strList = listToString(aux);
+    assert(!strcmp(strList, ""));
+    freeList(aux);
+    free(strList);
+
+    aux = strToListUpper(NULL);
+    strList = listToString(aux);
+    assert(!strcmp(strList, ""));
+    freeList(aux);
+    free(strList);
+
+    aux = strToListUpper("solo van a quedar las siguientes letras ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    strList = listToString(aux);
+    assert(!strcmp(strList, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"));
+    freeList(aux);
+    free(strList);
+
+    puts("OK!");
 }

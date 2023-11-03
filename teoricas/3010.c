@@ -8,8 +8,7 @@
 
 // Ejemplo de comentarios con tags para una función. Hacerlo en el .h !!!
 
-/*
-*   @brief Función que recibe vector de ingreso y su dimensión, retorna en su nombre un vector que cumple con el criterio recibido como función, además de modificar el parámetro de e/s de la dimensión.
+/**   @brief Función que recibe vector de ingreso y su dimensión, retorna en su nombre un vector que cumple con el criterio recibido como función, además de modificar el parámetro de e/s de la dimensión.
 *   @param v vector de enteros 
 *   @param dim dimensión del vector v
 *   @param n nueva dimension del vector de retorno

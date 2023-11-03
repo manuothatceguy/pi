@@ -9,7 +9,7 @@ int mcd(int n1, int n2){
         return n1;
     return mcd(n2,n1 % n2);
 }
-
+/// @param num  Numero entero
 /*Imprime un número en binario!, recursión de pila!!!*/
 void whatIs(int num){
     if( num >= 2){

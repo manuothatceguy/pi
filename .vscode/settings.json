@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "getnum.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "stackadt.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
