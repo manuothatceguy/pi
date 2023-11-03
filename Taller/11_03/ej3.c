@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <assert.h>
 
@@ -6,10 +5,12 @@
 typedef int (*fn) (int, int);
 int operatoria(int v[], size_t dim, int base, fn f);
 
+// Función auxiliar para pasar como parámetro
 int producto(int x, int y) {
     return x * y;
 }
 
+// Función auxiliar para pasar como parámetro
 int suma(int x, int y) {
     return x + y;
 }
