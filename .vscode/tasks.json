@@ -13,7 +13,8 @@
                 "-pedantic",
                 "-std=c99",
                 "-lm",
-                "-Wall"
+                "-Wall",
+                "-fsanitize=address"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -1,22 +1,35 @@
 #include <stdio.h>
 #include <assert.h>
+#include <stdlib.h>
 #include "utillist.h"
 
-TList addAll(TList lista1,  TList lista2){
-    if(lista2 == NULL){
-        return lista1;
-    }
-    if(lista1->elem > lista2->elem){
-        TList aux = lista1;
-        lista1 = lista2;
-        lista1->tail = aux;
-        return addAll(lista1->tail->tail,lista2->tail);
-    }
-    else if(lista1->elem < lista2->elem){
-        return addAll(lista1->tail,lista2);
-    }
-    return addAll(lista1->tail,lista2->tail);
 
+/**
+ * Escribir una función recursiva addAll que reciba dos listas donde cada elemento es menor 
+ * al siguiente (no acepta repetidos), y agregue a la primer lista los elementos de la segunda 
+ * que no estén en la primera. 
+*/
+TList addAll(TList lista1,  TList lista2){
+    if(lista2 == NULL)
+        return lista1;
+    if (lista1 == NULL) {
+        TList aux = malloc(sizeof(struct node));
+        aux->elem = lista2->elem;
+        aux->tail = addAll(lista1,lista2->tail);
+        return aux;
+    }
+    if(lista1->elem < lista2->elem){
+      lista1->tail = addAll(lista1->tail,lista2);
+      return lista1;
+    }
+    if(lista1->elem == lista2->elem){
+      lista1->tail = addAll(lista1->tail,lista2->tail);
+      return lista1;
+    }
+    TList aux = malloc(sizeof(struct node));
+    aux->elem = lista2->elem;
+    aux->tail = addAll(lista1,lista2->tail);
+    return aux;
 }
 
 #define ELEMS 200

@@ -28,5 +28,5 @@ main(void) {
 int operatoria(int v[], size_t dim, int base, fn f){
     if(dim == 0)
         return base;
-    return operatoria(v+1,dim-1,f(base,*v),f);
+    return operatoria(v+1,dim-1,f(base,*v),f); // Sería recursión de pila. Pensar para la próxima como cola.
 }
