@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#define BLOCK 20
+#define BLOCK 10
 
 struct stackCDT{
     elemType * vec;
