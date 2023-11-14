@@ -9,7 +9,7 @@
 typedef struct listCDT* listADT;
  
 // El tipo de datos a insertar, definido por el usuario
-typedef int elemType;
+typedef char * elemType;
 
 /**
  * Puntero a función de comparación
@@ -42,9 +42,13 @@ int belongsList(listADT list, elemType elem);
 */
 int addList(listADT list, elemType elem);
 
+/// @brief 
+/// @param list 
+/// @param elem 
+/// @return 
 int deleteList(listADT list, elemType elem);
 
-void tobegin(listADT list);
+void toBegin(listADT list);
 
 int hasNext(listADT list);
 
@@ -65,6 +69,5 @@ elemType * toArray(listADT list);
 */
 elemType * select(listADT list, int (*criteria)(elemType), size_t * dim);
 
-
-
+void map(listADT list, elemType(*mapFunc)(elemType));
 #endif

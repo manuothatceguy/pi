@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include "ej10.h"
 
 void invierte(char * src, char * dest){
     if(*src == '\0')

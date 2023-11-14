@@ -196,3 +196,16 @@ elemType * select(listADT list, int (*criteria)(elemType), size_t * dim){
     *dim = j;
     return toReturn;
 }
+
+void mapRec(TList list, elemType(*mapFunc)(elemType)){
+    if(list == NULL){
+        return;
+    }
+    mapRec(list->tail,mapFunc);
+    list->head = mapFunc(list->head);
+    return;
+}
+
+void map(listADT list, elemType(*mapFunc)(elemType)){
+    mapRec(list->first,mapFunc);
+}

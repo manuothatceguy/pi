@@ -2,7 +2,12 @@
     "files.associations": {
         "getnum.h": "c",
         "stdio.h": "c",
-        "stackadt.h": "c"
+        "stackadt.h": "c",
+        "*.tcc": "c",
+        "string": "c",
+        "string_view": "c",
+        "__locale": "c",
+        "__string": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
