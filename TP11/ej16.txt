@@ -1,0 +1,101 @@
+---ejercicio a---
+
+typedef struct alumno{
+    int legajo;
+    char * nombre;
+    char * apellido;
+} tipoAlumno;
+
+struct curso{
+    tipoAlumno alumnos[CUPO MAXIMO];
+    int legajos[CUPO MAXIMO];
+    char * nombreDelCurso;
+};
+
+struct cursosCDT{
+    struct curso * cursos;
+    int dim;
+};
+
+---ejercicio b---
+
+typedef enum dias{LUNES = 0,
+                MARTES,
+                MIERCOLES,
+                JUEVES,
+                VIERNES} day;
+
+struct horario{
+    day dia;
+    int horaInicio,horaFin;
+};
+
+struct materia{
+    char * nombreMateria;
+    struct horario * horarios;
+};
+
+struct horariosCDT{
+    int legajoAlumno;
+    struct materia materias[];
+};
+
+---ejercicio c---
+
+typedef enum dias {
+    LUNES=0,
+    MARTES,
+    MIERCOLES,
+    JUEVES,
+    VIERNES,
+    SABADO,
+    DOMINGO
+} dayType;
+
+typedef enum meses {
+    ENERO=0,
+    FEBRERO,
+    MARZO,
+    ABRIL,
+    MAYO,
+    JUNIO,
+    JULIO,
+    AGOSTO,
+    SEPTIEMBRE,
+    OCTUBRE,
+    NOVIEMBRE,
+    DICIEMBRE
+} monthType;
+
+
+struct factura{
+    dayType day;
+    monthType month;
+    unsigned int amount;
+};
+
+struct facturacionCDT{
+    struct factura facturas[365];
+};
+
+---ejercicio d---
+
+typedef struct time{
+    unsigned int hours;
+    unsigned int minutes;
+} timeType;
+
+struct interval{
+    timeType timeUp;
+    timeType timeBack;
+};
+
+struct temperaturesCDT{
+
+    struct interval * regs;
+    int temperature;
+
+};
+
+---ejercicio e---
+

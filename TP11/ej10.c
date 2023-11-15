@@ -56,15 +56,13 @@ static tList addRec(tList list, elemType e, int * count, compare cmp){
 }
 
 unsigned int add(bagADT bag, elemType elem){
-    int count;
+    int count = 0;
     bag->elems = addRec(bag->elems, elem, &count, bag->cmp);
     if(count == 1){
         bag->dim++;
     }
     return count;
 }
-
-
 
 unsigned int count(const bagADT bag, elemType elem){
     tList aux = bag->elems;
@@ -86,7 +84,7 @@ elemType mostPopular(bagADT bag){
     if(bag->dim == 0){
         fprintf(stderr,"Error no puede estar vacio");
         exit(1);
-    }else {
+    } else {
         tList aux = bag->elems;
         int max = aux->count;
         elemType maxElem = aux->head;
