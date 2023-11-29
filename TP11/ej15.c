@@ -51,6 +51,7 @@ unsigned int add(moveToFrontADT moveToFront, elemType elem){
     if(!added){
         return 0;
     }
+    moveToFront->list = addAlFinal(moveToFront->list,elem,moveToFront->cmp,&added);
     moveToFront->size += 1;
     return added;
 }

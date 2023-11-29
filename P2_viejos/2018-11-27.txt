@@ -1,0 +1,22 @@
+--- ejercicio 1 ---
+
+typedef struct node * TList;
+
+typedef struct node {
+    int elem;
+    struct node * tail;
+} TNode;
+
+void ordenarLista(TList list){
+    if(list == NULL || list->tail == NULL)
+        return;
+    if(list->elem >= list->tail->elem){
+        TList aux = list->tail->tail;
+        free(list->tail);
+        list->tail = aux;
+        ordenarLista(list);
+    }
+    ordenarLista(list->tail);
+}
+
+--- ejercicio 2 ---

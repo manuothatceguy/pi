@@ -1,0 +1,41 @@
+--- ejercicio 1 ---
+
+TList sortedList(TList list){
+    if(list->tail != NULL){
+        list->tail = sortedList(list->tail);
+        if(list->head >= list->tail->head){
+            TList aux = list->tail;
+            free(list);
+            list = aux;
+        }
+    }
+    return list;
+}
+
+
+
+
+
+
+
+ret final: 2 -> 3 -> 6 -> NULL
+3 aux = 2 -> 3 -> 6 -> NULL
+5 aux = 2 -> 3 -> 6 -> NULL 
+2 aux = 3 -> 6 -> NULL
+4 aux = 3 -> 6 -> NULL
+3 aux = 6 -> NULL
+6 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+--- ejercicio 1 ---
+
+typedef struct nodo * TLista;
+typedef struct nodo {
+    int elem;
+    struct nodo * sig;
+} TNodo;
+
+TLista comprimeLista(TLista lista, int(*fun)(int,int)){
+    if(lista == NULL){
+        return NULL;
+    }
+    if(lista->sig == NULL){
+        return NULL;
+    }
+    int res = fun(lista->elem,lista->sig->elem);
+    TLista new = malloc(sizeof(TNodo));
+    new->elem = res;
+    new->sig = comprimeLista(lista->sig->sig,fun);
+    return new;
+}
+
+int func(int a, int b){
+    return a+b;
+}
+
+void printLista(TLista lista){
+    if(lista == NULL){
+        printf("\n");
+        return;
+    }
+    printf("%d ",lista->elem;)
+    printLista(lista->sig);
+}
+
+void freeLista(TLista lista){
+    if(lista == NULL){
+        return;
+    }
+    freeLista(lista->sig);
+    free(lista);
+    return;
+}
+
+int main(){
+
+    TList nodos[8];
+    for(int i = 0; i < 8; i++){
+        nodos[i] = calloc(1,sizeof(TNodo));
+    }
+    nodos[0]->elem = 5;
+    nodos[1]->elem = 8;
+    nodos[2]->elem = 4;
+    nodos[3]->elem = 3;
+    nodos[4]->elem = 7;
+    nodos[5]->elem = 3;
+    nodos[6]->elem = 9;
+    nodos[7]->elem = 10
+
+    for(int i = 0; i < 7; i++){
+        nodos[i]->sig = nodos[i+1];
+    }
+    printLista(nodos[0]);
+    TLista compr = comprimeLista(nodos[0],func);
+    printLista(compr);
+    for(int i = 0; i < 8; i++){
+        free(nodos[i]);
+    }
+    freeLista(compr);
+
+    return 0;
+}

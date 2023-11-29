@@ -18,7 +18,7 @@ struct phrasesCDT{
 };
 
 phrasesADT newPhrasesADT(size_t keyFrom, size_t keyTo){
-    if(keyTo < keyFrom){
+    if(keyTo < keyFrom || keyFrom <= 0 || keyTo <= 0){
         return NULL;
     }
     phrasesADT new = malloc(sizeof(struct phrasesCDT));

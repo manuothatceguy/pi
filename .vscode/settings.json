@@ -7,7 +7,14 @@
         "string": "c",
         "string_view": "c",
         "__locale": "c",
-        "__string": "c"
+        "__string": "c",
+        "bibleADT.C": "cpp",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "__bit_reference": "c",
+        "set": "c",
+        "unordered_map": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

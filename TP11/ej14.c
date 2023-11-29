@@ -6,7 +6,7 @@
 typedef struct node{
     elemType head;
     struct node * tail
-} TNode;
+}TNode;
 
 typedef struct node * TList;
 
@@ -32,7 +32,7 @@ listADT newList(int (*compare) (elemType e1, elemType e2)){
 static TNode * addRec(TNode * first, elemType elem, int *ok, int (*compare) (elemType e1, elemType e2)) {
   int c;
   if ( first == NULL ||  ( c =  compare(elem, first->head)) < 0) {
-    TNode * aux = malloc(sizeof(TNode));
+    TNode * aux = malloc(sizeof(struct node));
     aux->head = elem;
     aux->tail = first;
     *ok = 1;
