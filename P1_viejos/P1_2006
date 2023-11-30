@@ -15,7 +15,7 @@ void generateNumbers(int * n){
     }
     return;
 }
-
+//HOLA
 int hayRepetidos(int * n){
     int i = 0, repetidos = 0;
     for(;i < MAX_NUM && !repetidos; i++){
