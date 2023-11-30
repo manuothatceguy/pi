@@ -4,7 +4,7 @@ void imprimeFila(int mat[3][4], unsigned int fila) {
     printf("%d ", mat[fila][i]);
     putchar('\n');
 }
-//hola 
+//holaa
 int
 main(void) {
 int m[][3] ={ {1,2,3}, {4,5,6}, {7,8,9}, {10,11,12},
