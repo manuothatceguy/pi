@@ -10,7 +10,7 @@ void elimina(char * s1, char * s2, char * s3){
         if(!fin2 && s1[i] == s2[i2]){
             i++;       
         }
-
+// hola 
         else if(!fin3 && s1[i] == s3[i3]){
             i++;
         }
