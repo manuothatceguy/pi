@@ -55,8 +55,6 @@ int main(){
     puts("Comienza el juego...\n");
     int res = jugar(bolillero,jug1,jug2);
     printf("Ganador: %s\n",(res == 3)?"ambos ganaron":((res == 1)?"jugador 1":"jugador 2"));
-
-
     return 0;
 }
 

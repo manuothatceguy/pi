@@ -16,5 +16,6 @@
         "set": "c",
         "unordered_map": "c"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "cmake.ignoreCMakeListsMissing": true
 }

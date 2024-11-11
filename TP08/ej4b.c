@@ -10,8 +10,6 @@
 #define PIERNA 3
 #define POKER 4
 
-
-
 typedef struct{
     int palo, num;
 } naipe;

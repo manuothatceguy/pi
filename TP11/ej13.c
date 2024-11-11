@@ -98,12 +98,12 @@ int getByRanking(rankingADT ranking, size_t n, elemType * elem){
 elemType * getTopRanking(const rankingADT ranking, size_t * top){
     size_t cantidad = size(ranking);
 
-    if(cantidad = 0){
+    if(cantidad == 0){
         *top = 0;
         return NULL;
     }
 
-    if(cantidad < top){
+    if(cantidad < *top){
         *top = cantidad;
     }
 
@@ -153,7 +153,7 @@ int main(void) {
   assert( contains(r, "Desarma y sangra") == 0 );
 
   size_t dimTop = 10;
-  char ** top = getTopRanking(r, &dimTop);
+  const char ** top = getTopRanking(r, &dimTop);
   assert(dimTop == 5 && !strcmp(top[0], "Footloose") && !strcmp(top[1], "Yesterday"));
   assert(!strcmp(top[2], "Ride of the Valkyries") && !strcmp(top[3], "Sucio y desprolijo"));
   assert(strcmp(top[4], "La bamba") == 0);
