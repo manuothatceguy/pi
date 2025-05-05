@@ -3,8 +3,7 @@
 typedef struct node{
     elemType value;
     struct node * next;
-    
-}tNode;
+} tNode;
 
 struct queueCDT{
     tNode * first;
